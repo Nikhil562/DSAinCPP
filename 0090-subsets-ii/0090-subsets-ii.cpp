@@ -1,25 +1,22 @@
 class Solution {
 public:
-   vector<vector<int>> subsetsWithDup(vector<int>& nums){
-    vector<vector<int>>Subsets; // final result
-    sort(nums.begin(),nums.end());
-    
-    int n = nums.size();
-    int subsets_count = (1<<n);  // Number of subsets --> 2^n
-    
-    set<vector<int>>unique; // for avoiding duplicate subsets
-    
-    for(int mask = 0;mask<subsets_count;mask++)
-    {
-        vector<int>subset;
-        for(int i=0;i<n;i++){
-            if((mask & (1<<i)) != 0) subset.push_back(nums[i]);
-        }
-        unique.insert(subset);
-    }
-    
-    for (auto it = unique.begin();it != unique.end();it++) Subsets.push_back(*it);
-    
-    return Subsets;
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+   
+   int n=nums.size();
+   int t=1<<n;
+ sort(nums.begin(),nums.end());
+   vector<vector<int>> ans;
+    set<vector<int>> s;
+   for(int i=0;i<t;i++){
+       vector<int> v;
+       for(int j=0;j<n;j++){
+           if(i&(1<<j)){
+               v.push_back(nums[j]);
+           }
+       }
+       s.insert(v);
+   }
+        for(auto i: s) ans.push_back(i);
+        return ans;
 }
 };
