@@ -14,6 +14,7 @@ public:
                 count--;
             }
         }
+        if(count==0) return x;
         // cout<<x<<" "<<count<<"\n";
         for(int i=0;i<32 && count; i++) {
             int temp = 1<<i;
