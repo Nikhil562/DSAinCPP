@@ -7,6 +7,7 @@ using namespace std;
 
 class Solution{
     public:
+
     int maxOnes(int a[], int n)
     {
         // Your code goes here
@@ -32,6 +33,8 @@ class Solution{
         return (count+mxcount);
     }
 };
+
+
 
 //{ Driver Code Starts.
 int main()
