@@ -20,7 +20,7 @@ public:
             temp_sum += cardPoints[j];
             if (j-i+1 < n-k) {
                 // do nothing
-            } else {
+            } else if(j-i+1==n-k){
                 // Reached window size
                // cout<< "temp_sum is " << temp_sum << endl;
                 ans = max(ans, (sum - temp_sum));
