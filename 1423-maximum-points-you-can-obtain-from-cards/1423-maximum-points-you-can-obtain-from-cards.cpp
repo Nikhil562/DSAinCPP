@@ -1,35 +1,22 @@
 class Solution {
 public:
-    int maxScore(vector<int>& cardPoints, int k) {
-        int sum = 0;
-        
-        for (auto iter : cardPoints) {
-            sum += iter;
-        }
-        
-        int i = 0;
-        int j = 0;
-        int temp_sum = 0;
-        int ans = 0;
-        int n = cardPoints.size();
-       // cout << "Sum is " << sum << endl;
-        
-        if (k == n) return sum;
-
-        while (j < n) {
-            temp_sum += cardPoints[j];
-            if (j-i+1 < n-k) {
-                // do nothing
-            } else if(j-i+1==n-k){
-                // Reached window size
-               // cout<< "temp_sum is " << temp_sum << endl;
-                ans = max(ans, (sum - temp_sum));
-                temp_sum -= cardPoints[i];
+    int maxScore(vector<int>& nums, int k) {
+        int i=0,j=0,n=nums.size();
+        int sum=accumulate(nums.begin(),nums.end(),0);
+        int tmpSum=0;
+        int ans=0;
+        int windSize=n-k;
+        if(n==k) return sum;
+        while(j<n){
+            tmpSum+=nums[j];
+            if(j-i+1==windSize){
+                ans=max(ans,sum-tmpSum);
+                tmpSum-=nums[i];
                 i++;
             }
             j++;
         }
-        
         return ans;
     }
 };
+
