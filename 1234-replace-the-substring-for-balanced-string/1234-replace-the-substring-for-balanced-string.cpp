@@ -15,7 +15,14 @@ public:
         }
         if (replace == 0) return 0;
         while (j < N) {
-            replace -= --m[s[j++]] == 0;
+            // replace -= --m[s[j++]] == 0;
+            char currentChar = s[j];
+            int currentFreq = --m[currentChar];
+            if (currentFreq == 0) {
+             replace--;
+                                }
+            j++;
+
             while (replace <= 0) {
                 ans = min(ans, j - i);
                 replace += m[s[i++]]++ == 0;
