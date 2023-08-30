@@ -18,9 +18,8 @@ public:
             // replace -= --m[s[j++]] == 0;
             char currentChar = s[j];
             int currentFreq = --m[currentChar];
-            if (currentFreq == 0) {
-             replace--;
-                                }
+            cout<<currentFreq<<endl;
+            if (currentFreq == 0) replace--;
             j++;
 
             while (replace <= 0) {
