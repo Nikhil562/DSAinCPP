@@ -18,13 +18,21 @@ public:
             // replace -= --m[s[j++]] == 0;
             char currentChar = s[j];
             int currentFreq = --m[currentChar];
-            cout<<currentFreq<<endl;
+            // cout<<currentFreq<<endl;
             if (currentFreq == 0) replace--;
             j++;
 
             while (replace <= 0) {
                 ans = min(ans, j - i);
-                replace += m[s[i++]]++ == 0;
+                // replace += m[s[i]]++ == 0;
+                char currentChar = s[i];
+                int originalFreq = m[currentChar];
+                if (originalFreq == 0) {
+                 replace++;
+                    }   
+                m[currentChar]++;
+
+                i++;
             }
         }
         return ans;
