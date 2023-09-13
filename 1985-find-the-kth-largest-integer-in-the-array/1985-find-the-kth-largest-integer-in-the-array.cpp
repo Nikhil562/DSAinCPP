@@ -17,7 +17,7 @@ class comp{
                 else
                 return false;
             }
-            return false;
+            return true;
         }
         else
         return false;
