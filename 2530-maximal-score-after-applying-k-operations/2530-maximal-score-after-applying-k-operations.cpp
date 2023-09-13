@@ -12,4 +12,6 @@ public:
         }
         return score;
     }
+    
+    // q.push(ceil((double)t/3))
 };
