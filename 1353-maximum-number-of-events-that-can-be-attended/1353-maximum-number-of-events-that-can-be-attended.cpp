@@ -1,7 +1,7 @@
 class Solution {
  public:
   int maxEvents(vector<vector<int>> &events) {
-    sort(begin(events), end(events), [](auto &v1, auto &v2) { return v1[0] < v2[0]; });
+    sort(begin(events), end(events));
     priority_queue<int, vector<int>, greater<int>> pq;  // min heap: stores end times by earliest
     int day = 1, i = 0, n = events.size(), ans = 0;     // i: event index
     while (i < n || !pq.empty()) {
