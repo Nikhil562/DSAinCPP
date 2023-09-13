@@ -8,7 +8,7 @@ public:
             long long t = q.top();
             q.pop();
             score += t;
-            q.push(ceil((double)t / 3)); // Corrected ceil function
+            q.push(ceil(t / 3.0)); // Corrected ceil function
         }
         return score;
     }
