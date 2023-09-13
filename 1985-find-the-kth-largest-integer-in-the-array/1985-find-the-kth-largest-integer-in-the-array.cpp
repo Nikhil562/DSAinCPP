@@ -2,25 +2,10 @@ class comp{
     public:
     bool operator()(string &a,string &b)
     {
-        if(a.size()>b.size())
-        return true;
-        if(a.size()==b.size())
-        {
-            for(int i=0;i<a.size();i++)
-            {
-                if(a[i]==b[i])
-                continue;
-                else if(a[i]>b[i])
-                {
-                    return true;
-                }
-                else
-                return false;
+        if (a.size() == b.size()) {
+                return a > b;
             }
-            return true;
-        }
-        else
-        return false;
+            return a.size() > b.size();
     }
 };
 class Solution {
