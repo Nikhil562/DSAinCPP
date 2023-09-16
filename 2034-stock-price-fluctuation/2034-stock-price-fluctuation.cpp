@@ -1,30 +1,35 @@
 class StockPrice {
 public:
-    set<pair<int,int>> s;  //{price ,-time}
-    map<int,int> map; // -time : price
     
-    StockPrice() {}
+    map<int,int> m;
     
-    void update(int time, int price) {
-        if(map.find(-time)!= map.end()){
-            s.erase({map[-time],-time});
-        }
-        map[-time]= price;
-        s.insert({price,-time});
+    set<pair<int,int>> s;
+    
+    StockPrice() {
+        s.clear();
+        m.clear();
     }
     
+    void update(int timestamp, int price) {
+        if(m.find(timestamp) == m.end()) {
+            s.insert({price, timestamp});
+            m[timestamp] = price;
+        } else {
+            s.erase({m[timestamp], timestamp});
+            s.insert({price, timestamp});
+            m[timestamp] = price;
+        }
+    }
     
     int current() {
-        return map.begin()->second ;
+        return m[(*(m.rbegin())).first];
     }
-    
     
     int maximum() {
-        return s.rbegin()->first;
+        return (*s.rbegin()).first;
     }
     
-    
     int minimum() {
-        return s.begin()->first;
+        return (*s.begin()).first;
     }
 };
