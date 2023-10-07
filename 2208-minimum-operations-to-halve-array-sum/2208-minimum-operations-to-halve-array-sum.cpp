@@ -1,40 +1,21 @@
 class Solution {
 public:
-
-    int halveArray(vector<int>& nums) 
-    {
-        // use priority Queue to store elements in assending order
-        // So Biggest element is always on top of Queue
-        priority_queue<double>Q;
-
-        double sum=0;   //Total sum of element
-
-        //store all elments in Queue
-        for(auto ele : nums)
-        {
-            sum+=ele;
-            Q.push(ele);
-            
+    int halveArray(vector<int>& A) {
+        priority_queue<double> pq;
+        double sum = 0;
+        int ans = 0;
+        for (int n : A) {
+            pq.push(n);
+            sum += n;
         }
-        
-        //half of total
-        double half=sum/2;
-
-        //count operations until sum is greater than half 
-        int count=0;
-        while(sum>half)
-        { 
-            double max=Q.top();     //maximum emement of Queue
-            Q.pop();                //remove it from Queue
-
-            max/=2;                 
-            Q.push(max);            //add half of that element
-            count++;                //count accurance of operation
-
-            sum-=max;               //substarct half of element from sum 
+        double goal = sum / 2;
+        while (sum > goal) {
+            auto x = pq.top();
+            pq.pop();
+            sum -= x / 2;
+            pq.push(x / 2);
+            ++ans;
         }
-       
-        return count;
-        
+        return ans;
     }
 };
