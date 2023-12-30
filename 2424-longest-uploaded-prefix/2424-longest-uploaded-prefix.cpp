@@ -1,25 +1,33 @@
 class LUPrefix {
 public:
-    int maxi=0;
-    unordered_map<int,int> mp;
+    
+    set<int> s;
+    
     LUPrefix(int n) {
+        
+        for(int i=1;i<=1e5;i++){
+            s.insert(i);
+        }
         
     }
     
     void upload(int video) {
         
-        mp[video]++;
-        while(mp[maxi+1]>0) maxi++;
+        s.erase(video);
     }
     
     int longest() {
-        return maxi;
+        
+        
+        int h = *s.begin();
+        
+        return h-1;
     }
 };
 
 /**
  * Your LUPrefix object will be instantiated and called as such:
  * LUPrefix* obj = new LUPrefix(n);
- * obj->upload(video);
+ * obj->upload(video);A
  * int param_2 = obj->longest();
  */
