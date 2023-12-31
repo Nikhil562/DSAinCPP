@@ -1,9 +1,10 @@
 class Solution {
  public:
   int maxEvents(vector<vector<int>> &events) {
-    sort(begin(events), end(events));
+    sort(events.begin(), events.end());
     priority_queue<int, vector<int>, greater<int>> pq;  // min heap: stores end times by earliest
-    int day = 1, i = 0, n = events.size(), ans = 0;     // i: event index
+    int day = 1, i = 0, n = events.size(), ans = 0; 
+      // [[1,2],[2,3],[3,4]]// i: event index
     while (i < n || !pq.empty()) {
       if (pq.empty()) {
         day = events[i][0];
